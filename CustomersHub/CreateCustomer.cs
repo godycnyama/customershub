@@ -23,7 +23,7 @@ namespace CustomersHub
 
         [FunctionName("CreateCustomer")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "createCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "createCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
             ILogger log)
         {
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();

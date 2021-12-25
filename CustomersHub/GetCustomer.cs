@@ -23,7 +23,7 @@ namespace CustomersHub
 
         [FunctionName("GetCustomer")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
             ILogger log)
         {
             if (string.IsNullOrEmpty(req.Query["email"]))

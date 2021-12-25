@@ -23,7 +23,7 @@ namespace CustomersHub
 
         [FunctionName("DeleteCustomer")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "deleteCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "deleteCustomer")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
             ILogger log)
         {
             if (string.IsNullOrEmpty(req.Query["email"]))

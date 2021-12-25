@@ -24,7 +24,7 @@ namespace CustomersHub
 
         [FunctionName("GetCustomers")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getCustomers")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getCustomers")] HttpRequest req, [Table("Customers", Connection = "AzureWebJobsStorage")] CloudTable table,
             ILogger log)
         {
             if (string.IsNullOrEmpty(req.Query["partitionKey"]))
